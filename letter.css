@@ -1,0 +1,879 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+:root {
+  --rose-bg: #f8dedc;
+  --rose-light: #fff2ee;
+
+  --maroon: #671c2a;
+  --maroon-dark: #3d101a;
+
+  --navy: #101d3b;
+
+  --gold: #d8a45a;
+
+  --paper: #fffaf0;
+
+  --ink: #55353a;
+}
+
+
+html,
+body {
+  min-height: 100%;
+}
+
+
+body {
+  min-height: 100svh;
+
+  overflow-x: hidden;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+
+  isolation: isolate;
+
+  padding: 30px 16px;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      rgba(255, 255, 255, 0.75),
+      transparent 35%
+    ),
+    linear-gradient(
+      135deg,
+      var(--rose-light),
+      var(--rose-bg)
+    );
+
+  color: var(--ink);
+}
+
+
+/* =========================================
+   BACKGROUND GLOW
+========================================= */
+
+.background-glow {
+  position: fixed;
+
+  width: 50vmax;
+  height: 50vmax;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.4);
+
+  filter: blur(55px);
+
+  z-index: -3;
+
+  animation: glow 5s ease-in-out infinite;
+}
+
+
+@keyframes glow {
+
+  0%,
+  100% {
+    transform: scale(0.9);
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: scale(1.1);
+    opacity: 0.9;
+  }
+
+}
+
+
+/* =========================================
+   FLOWERS
+========================================= */
+
+.flowers {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: -1;
+
+  pointer-events: none;
+}
+
+
+.flower {
+  position: absolute;
+
+  width: clamp(65px, 11vw, 145px);
+
+  aspect-ratio: 1;
+
+  animation: float 4s ease-in-out infinite;
+}
+
+
+.flower::before,
+.flower::after {
+
+  content: "";
+
+  position: absolute;
+
+  inset: 15%;
+
+  border-radius: 50%;
+
+  background:
+
+    radial-gradient(
+      circle,
+      #ffd0ce 0 10%,
+      transparent 11%
+    ),
+
+    radial-gradient(
+      ellipse at 50% 10%,
+      #bd2d43 0 28%,
+      transparent 29%
+    ),
+
+    radial-gradient(
+      ellipse at 90% 50%,
+      #982238 0 28%,
+      transparent 29%
+    ),
+
+    radial-gradient(
+      ellipse at 50% 90%,
+      #a6253b 0 28%,
+      transparent 29%
+    ),
+
+    radial-gradient(
+      ellipse at 10% 50%,
+      #c4374b 0 28%,
+      transparent 29%
+    );
+
+  filter:
+    drop-shadow(
+      0 6px 7px rgba(70, 10, 20, 0.15)
+    );
+}
+
+
+.flower::after {
+  transform: rotate(45deg) scale(0.72);
+}
+
+
+.flower-1 {
+  top: -2%;
+  left: -2%;
+}
+
+
+.flower-2 {
+  top: -2%;
+  right: -2%;
+
+  animation-delay: -0.8s;
+}
+
+
+.flower-3 {
+  bottom: -2%;
+  left: -2%;
+
+  animation-delay: -1.7s;
+}
+
+
+.flower-4 {
+  bottom: -2%;
+  right: -2%;
+
+  animation-delay: -2.4s;
+}
+
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+
+}
+
+
+/* =========================================
+   FALLING PETALS
+========================================= */
+
+.petals {
+
+  position: fixed;
+
+  inset: 0;
+
+  overflow: hidden;
+
+  pointer-events: none;
+
+  z-index: -1;
+}
+
+
+.petals span {
+
+  position: absolute;
+
+  top: -30px;
+
+  width: 11px;
+  height: 18px;
+
+  border-radius:
+    80% 20% 80% 20%;
+
+  background:
+    linear-gradient(
+      135deg,
+      #d84b62,
+      #f4a5aa
+    );
+
+  opacity: 0.65;
+
+  animation:
+    fall linear infinite;
+}
+
+
+.petals span:nth-child(1) {
+  left: 7%;
+  animation-duration: 8s;
+}
+
+.petals span:nth-child(2) {
+  left: 19%;
+  animation-duration: 10s;
+  animation-delay: -3s;
+}
+
+.petals span:nth-child(3) {
+  left: 32%;
+  animation-duration: 7s;
+  animation-delay: -6s;
+}
+
+.petals span:nth-child(4) {
+  left: 46%;
+  animation-duration: 11s;
+  animation-delay: -2s;
+}
+
+.petals span:nth-child(5) {
+  left: 61%;
+  animation-duration: 8s;
+  animation-delay: -5s;
+}
+
+.petals span:nth-child(6) {
+  left: 74%;
+  animation-duration: 10s;
+  animation-delay: -7s;
+}
+
+.petals span:nth-child(7) {
+  left: 86%;
+  animation-duration: 7s;
+  animation-delay: -4s;
+}
+
+.petals span:nth-child(8) {
+  left: 96%;
+  animation-duration: 12s;
+  animation-delay: -8s;
+}
+
+
+@keyframes fall {
+
+  0% {
+    transform:
+      translateY(-10vh)
+      rotate(0deg);
+  }
+
+  50% {
+    margin-left: 30px;
+  }
+
+  100% {
+    transform:
+      translateY(115vh)
+      rotate(540deg);
+  }
+
+}
+
+
+/* =========================================
+   LETTER PAGE
+========================================= */
+
+.letter-page {
+
+  width: min(100%, 760px);
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+}
+
+
+.letter-card {
+
+  position: relative;
+
+  width: min(100%, 680px);
+
+  padding:
+    clamp(34px, 7vw, 70px)
+    clamp(24px, 7vw, 75px);
+
+  background:
+
+    linear-gradient(
+      rgba(255, 255, 255, 0.25),
+      rgba(255, 255, 255, 0.25)
+    ),
+
+    var(--paper);
+
+  border:
+    1px solid rgba(103, 28, 42, 0.25);
+
+  border-radius: 8px;
+
+  box-shadow:
+
+    0 25px 55px
+      rgba(70, 20, 30, 0.2),
+
+    0 0 0 8px
+      rgba(255, 255, 255, 0.22);
+
+  text-align: center;
+
+  animation:
+    cardIn 1s
+    cubic-bezier(.2, .8, .2, 1)
+    both;
+}
+
+
+@keyframes cardIn {
+
+  from {
+
+    opacity: 0;
+
+    transform:
+      translateY(35px)
+      scale(0.96);
+
+  }
+
+  to {
+
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+
+  }
+
+}
+
+
+/* Inner border */
+
+.letter-card::before {
+
+  content: "";
+
+  position: absolute;
+
+  inset: 12px;
+
+  border:
+    1px solid
+    rgba(128, 73, 45, 0.22);
+
+  pointer-events: none;
+}
+
+
+/* =========================================
+   TITLE
+========================================= */
+
+.card-decoration {
+
+  color: var(--gold);
+
+  font-size: 25px;
+
+  margin-bottom: 18px;
+}
+
+
+.small-title {
+
+  color: #96646c;
+
+  font-size: 12px;
+
+  letter-spacing: 0.28em;
+
+  margin-bottom: 18px;
+}
+
+
+h1 {
+
+  color: var(--maroon);
+
+  font-size:
+    clamp(30px, 6vw, 52px);
+
+  font-weight: normal;
+}
+
+
+/* =========================================
+   DIVIDER
+========================================= */
+
+.divider {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  margin:
+    22px auto 28px;
+
+  width: min(100%, 360px);
+
+  color: var(--maroon);
+}
+
+
+.divider::before,
+.divider::after {
+
+  content: "";
+
+  height: 1px;
+
+  flex: 1;
+
+  background:
+    linear-gradient(
+      to right,
+      transparent,
+      rgba(103, 28, 42, 0.35)
+    );
+}
+
+
+.divider::after {
+
+  background:
+    linear-gradient(
+      to left,
+      transparent,
+      rgba(103, 28, 42, 0.35)
+    );
+}
+
+
+.divider span {
+  font-size: 15px;
+}
+
+
+/* =========================================
+   LETTER TEXT
+========================================= */
+
+.letter-text {
+
+  font-size:
+    clamp(15px, 2.3vw, 18px);
+
+  line-height: 1.9;
+
+  margin:
+    0 auto 20px;
+
+  max-width: 560px;
+}
+
+
+/* =========================================
+   SIGNATURE
+========================================= */
+
+.signature {
+
+  margin-top: 34px;
+
+  color: #7d4d54;
+
+  font-size: 15px;
+
+  line-height: 1.7;
+}
+
+
+.signature span {
+
+  color: var(--maroon);
+
+  font-size: 20px;
+
+  font-style: italic;
+}
+
+
+/* =========================================
+   BACK BUTTON
+========================================= */
+
+.back-btn {
+
+  margin-top: 30px;
+
+  padding:
+    11px 25px;
+
+  border:
+    1px solid var(--gold);
+
+  border-radius: 10px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #1b2b52,
+      var(--navy)
+    );
+
+  color: #fff4d8;
+
+  font-family:
+    Georgia,
+    serif;
+
+  letter-spacing: 0.12em;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.25s ease;
+}
+
+
+.back-btn:hover {
+
+  transform:
+    translateY(-2px);
+}
+
+
+.back-btn:active {
+
+  transform:
+    scale(0.97);
+}
+
+
+/* =========================================
+   MOBILE RESPONSIVE
+========================================= */
+
+@media (max-width: 600px) {
+
+  body {
+    padding: 20px 12px;
+  }
+
+
+  .letter-card {
+
+    padding:
+      38px 22px;
+  }
+
+
+  .letter-card::before {
+
+    inset: 8px;
+  }
+
+
+  .letter-text {
+
+    line-height: 1.7;
+  }
+
+
+  .flower {
+
+    width: 75px;
+  }
+
+}
+/* =========================================
+   BOTTOM BUTTONS
+========================================= */
+
+/* =========================================
+   BOTTOM BUTTONS
+========================================= */
+
+.bottom-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 12px;
+
+  width: 100%;
+
+  margin-top: 35px;
+}
+
+
+/* BACK BUTTON */
+
+.back-btn {
+  padding: 11px 20px;
+
+  border: 1px solid #c9a15b;
+  border-radius: 10px;
+
+  background: #101d3b;
+
+  color: #fff4dc;
+
+  font-family:
+    "Noto Serif Bengali",
+    Georgia,
+    serif;
+
+  font-size: 14px;
+
+  cursor: pointer;
+
+  transition: .25s ease;
+}
+
+.back-btn:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 18px rgba(16, 29, 59, .2);
+}
+
+
+/* =========================================
+   ABOUT BUTTON
+========================================= */
+
+.about-btn {
+  position: relative;
+
+  overflow: hidden;
+
+  min-width: 190px;
+
+  padding: 11px 20px;
+
+  border: 1px solid #c9a15b;
+  border-radius: 10px;
+
+  background: #101d3b;
+
+  color: #fff4dc;
+
+  font-family:
+    "Noto Serif Bengali",
+    Georgia,
+    serif;
+
+  font-size: 14px;
+
+  cursor: pointer;
+
+  transition: .25s ease;
+}
+
+
+.about-btn:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 18px rgba(16, 29, 59, .2);
+}
+
+
+/* Text */
+
+.about-text {
+  position: relative;
+
+  z-index: 2;
+
+  transition: .2s ease;
+}
+
+
+/* =========================================
+   MINI CAR
+========================================= */
+
+.mini-car {
+
+  position: absolute;
+
+  left: -45px;
+
+  top: 50%;
+
+  transform:
+    translateY(-50%);
+
+  font-size: 25px;
+
+  opacity: 0;
+
+  z-index: 3;
+
+  pointer-events: none;
+}
+
+
+/* Car animation */
+
+.about-btn.drive .mini-car {
+
+  animation:
+    miniCarDrive
+    1.5s
+    ease-in-out
+    forwards;
+
+}
+
+
+@keyframes miniCarDrive {
+
+  0% {
+    left: -45px;
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  50% {
+    left: 50%;
+
+    transform:
+      translate(-50%, -50%);
+  }
+
+  85% {
+    opacity: 1;
+  }
+
+  100% {
+    left: calc(100% + 45px);
+    opacity: 0;
+  }
+
+}
+
+
+/* Button text disappears slightly */
+
+.about-btn.drive .about-text {
+
+  opacity: .25;
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+  .bottom-buttons {
+
+    gap: 8px;
+
+    margin-top: 28px;
+
+  }
+
+  .back-btn,
+  .about-btn {
+
+    padding:
+      10px 14px;
+
+    font-size: 12px;
+
+  }
+
+  .about-btn {
+
+    min-width: 165px;
+
+  }
+
+}

@@ -1,0 +1,726 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+:root {
+
+  --rose: #f8dedc;
+  --rose-light: #fff5f1;
+
+  --maroon: #681c2b;
+  --maroon-dark: #42111c;
+
+  --navy: #101d3b;
+
+  --paper: #fffaf4;
+
+  --text: #4e3437;
+
+  --gold: #d5a45b;
+}
+
+
+body {
+
+  min-height: 100svh;
+
+  overflow-x: hidden;
+
+  font-family:
+    "Noto Serif Bengali",
+    Georgia,
+    serif;
+
+  background:
+    radial-gradient(
+      circle at center,
+      #fffaf7,
+      transparent 45%
+    ),
+
+    linear-gradient(
+      135deg,
+      var(--rose-light),
+      var(--rose)
+    );
+
+  color: var(--text);
+}
+
+
+/* =================================
+   GLOW
+================================= */
+
+.background-glow {
+
+  position: fixed;
+
+  width: 55vmax;
+  height: 55vmax;
+
+  left: 50%;
+  top: 50%;
+
+  transform:
+    translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background:
+    rgba(255,255,255,.45);
+
+  filter: blur(70px);
+
+  z-index: -3;
+
+  animation:
+    glow 6s infinite ease-in-out;
+}
+
+
+@keyframes glow {
+
+  0%,100% {
+    transform:
+      translate(-50%, -50%)
+      scale(.9);
+  }
+
+  50% {
+    transform:
+      translate(-50%, -50%)
+      scale(1.1);
+  }
+
+}
+
+
+/* =================================
+   FLOWERS
+================================= */
+
+.flowers {
+
+  position: fixed;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  z-index: -1;
+}
+
+
+.flower {
+
+  position: absolute;
+
+  width: 100px;
+  height: 100px;
+
+  animation:
+    flowerFloat 5s infinite ease-in-out;
+}
+
+
+.flower::before {
+
+  content: "🌹";
+
+  font-size: 75px;
+
+  filter:
+    drop-shadow(
+      0 8px 10px
+      rgba(80,20,30,.2)
+    );
+}
+
+
+.flower-1 {
+  top: 10px;
+  left: 10px;
+}
+
+
+.flower-2 {
+  top: 10px;
+  right: 10px;
+
+  animation-delay: -2s;
+}
+
+
+.flower-3 {
+  bottom: 5px;
+  left: 10px;
+
+  animation-delay: -3s;
+}
+
+
+.flower-4 {
+  bottom: 5px;
+  right: 10px;
+
+  animation-delay: -1s;
+}
+
+
+@keyframes flowerFloat {
+
+  0%,100% {
+    transform:
+      translateY(0)
+      rotate(-3deg);
+  }
+
+  50% {
+    transform:
+      translateY(-10px)
+      rotate(3deg);
+  }
+
+}
+
+
+/* =================================
+   MAIN
+================================= */
+
+.chat-page {
+
+  width: min(
+    100%,
+    850px
+  );
+
+  margin: auto;
+
+  padding:
+    30px 15px 40px;
+}
+
+
+/* =================================
+   HEADER
+================================= */
+
+.chat-header {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  margin-bottom: 18px;
+
+  padding:
+    18px 20px;
+
+  border-radius: 18px;
+
+  background:
+    rgba(255,255,255,.72);
+
+  backdrop-filter:
+    blur(12px);
+
+  border:
+    1px solid
+    rgba(103,28,42,.12);
+
+  box-shadow:
+    0 15px 35px
+    rgba(70,20,30,.12);
+}
+
+
+.bot-icon {
+
+  width: 50px;
+  height: 50px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 15px;
+
+  background:
+    linear-gradient(
+      145deg,
+      var(--maroon),
+      var(--maroon-dark)
+    );
+
+  color: #ffe9bf;
+
+  font-size: 25px;
+
+  box-shadow:
+    0 8px 18px
+    rgba(80,20,30,.2);
+}
+
+
+.chat-header h1 {
+
+  color: var(--maroon);
+
+  font-size:
+    clamp(20px,4vw,28px);
+}
+
+
+.chat-header p {
+
+  color: #82666b;
+
+  font-size: 13px;
+
+  margin-top: 2px;
+}
+
+
+/* =================================
+   CHAT
+================================= */
+
+.chat-container {
+
+  background:
+    rgba(255,255,255,.8);
+
+  backdrop-filter:
+    blur(15px);
+
+  border:
+    1px solid
+    rgba(103,28,42,.12);
+
+  border-radius: 22px;
+
+  padding: 20px;
+
+  box-shadow:
+    0 25px 60px
+    rgba(70,20,30,.15);
+}
+
+
+/* =================================
+   MESSAGE
+================================= */
+
+.message {
+
+  display: flex;
+
+  gap: 12px;
+
+  margin-bottom: 18px;
+}
+
+
+.avatar {
+
+  min-width: 38px;
+  height: 38px;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 12px;
+
+  background:
+    var(--maroon);
+
+  color: white;
+
+  font-family: Georgia, serif;
+}
+
+
+.message-content {
+
+  max-width: 90%;
+
+  padding:
+    13px 16px;
+
+  border-radius:
+    5px 18px 18px 18px;
+
+  background:
+    #fff8f2;
+
+  border:
+    1px solid
+    rgba(103,28,42,.08);
+
+  line-height: 1.7;
+
+  font-size: 14px;
+}
+
+
+.message-content p + p {
+  margin-top: 8px;
+}
+
+
+/* =================================
+   QUESTIONS
+================================= */
+
+.questions {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, 1fr);
+
+  gap: 10px;
+
+  margin:
+    20px 0;
+}
+
+
+.questions button {
+
+  border:
+    1px solid
+    rgba(103,28,42,.18);
+
+  background:
+    #fffaf6;
+
+  color:
+    var(--maroon);
+
+  padding:
+    12px 14px;
+
+  border-radius: 12px;
+
+  font-family:
+    "Noto Serif Bengali",
+    Georgia,
+    serif;
+
+  cursor: pointer;
+
+  text-align: left;
+
+  transition:
+    .25s ease;
+}
+
+
+.questions button:hover {
+
+  background:
+    var(--maroon);
+
+  color: white;
+
+  transform:
+    translateY(-2px);
+}
+
+
+/* =================================
+   USER MESSAGE
+================================= */
+
+.user-message {
+
+  justify-content: flex-end;
+}
+
+
+.user-message .message-content {
+
+  background:
+    var(--navy);
+
+  color: white;
+
+  border-radius:
+    18px 5px 18px 18px;
+}
+
+
+/* =================================
+   TYPING
+================================= */
+
+.typing {
+
+  display: none;
+
+  gap: 5px;
+
+  padding:
+    10px 15px;
+}
+
+
+.typing.active {
+  display: flex;
+}
+
+
+.typing span {
+
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background:
+    var(--maroon);
+
+  animation:
+    typing 1s infinite;
+}
+
+
+.typing span:nth-child(2) {
+  animation-delay: .15s;
+}
+
+
+.typing span:nth-child(3) {
+  animation-delay: .3s;
+}
+
+
+@keyframes typing {
+
+  0%,100% {
+    transform:
+      translateY(0);
+  }
+
+  50% {
+    transform:
+      translateY(-5px);
+  }
+
+}
+
+
+/* =================================
+   INPUT
+================================= */
+
+.chat-input-area {
+
+  display: flex;
+
+  gap: 8px;
+
+  margin-top: 10px;
+}
+
+
+.chat-input-area input {
+
+  flex: 1;
+
+  min-width: 0;
+
+  border:
+    1px solid
+    rgba(103,28,42,.2);
+
+  outline: none;
+
+  border-radius: 13px;
+
+  padding:
+    13px 15px;
+
+  background:
+    white;
+
+  font-family:
+    "Noto Serif Bengali",
+    Georgia,
+    serif;
+
+  font-size: 14px;
+}
+
+
+.chat-input-area input:focus {
+
+  border-color:
+    var(--maroon);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(103,28,42,.08);
+}
+
+
+.chat-input-area button {
+
+  width: 48px;
+
+  border: none;
+
+  border-radius: 13px;
+
+  background:
+    var(--navy);
+
+  color: white;
+
+  font-size: 20px;
+
+  cursor: pointer;
+
+  transition:
+    .25s ease;
+}
+
+
+.chat-input-area button:hover {
+
+  transform:
+    scale(1.05);
+}
+
+
+/* =================================
+   BACK
+================================= */
+
+.back-home {
+
+  display: block;
+
+  margin:
+    18px auto 0;
+
+  padding:
+    10px 20px;
+
+  border:
+    1px solid
+    var(--gold);
+
+  border-radius: 10px;
+
+  background:
+    var(--navy);
+
+  color:
+    #fff2d2;
+
+  font-family:
+    "Noto Serif Bengali",
+    Georgia,
+    serif;
+
+  cursor: pointer;
+}
+
+
+/* =================================
+   MOBILE
+================================= */
+
+@media (max-width: 600px) {
+
+  .chat-page {
+    padding:
+      15px 10px 25px;
+  }
+
+
+  .chat-container {
+    padding: 12px;
+  }
+
+
+  .questions {
+
+    grid-template-columns:
+      1fr;
+
+  }
+
+
+  .message-content {
+
+    font-size: 13px;
+
+  }
+
+
+  .flower::before {
+
+    font-size: 50px;
+
+  }
+
+
+}
+.site-footer {
+
+  width: 100%;
+
+  text-align: center;
+
+  margin-top: 35px;
+
+  padding: 20px 15px;
+
+  color: #80666a;
+
+  font-family:
+    "Noto Serif Bengali",
+    Georgia,
+    serif;
+
+  font-size: 12px;
+}
+
+
+.site-footer p {
+  margin: 0;
+}
+
+
+.site-footer a {
+
+  color: #681c2b;
+
+  font-weight: 700;
+
+  text-decoration: none;
+
+  transition: .25s ease;
+}
+
+
+.site-footer a:hover {
+
+  color: #101d3b;
+
+  text-decoration: underline;
+
+}
